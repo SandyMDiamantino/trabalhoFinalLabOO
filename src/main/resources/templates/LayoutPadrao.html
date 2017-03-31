@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz./thymeleaf/layout">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Guild of Cards</title>
+	<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<!--  Navbar – Adaptado de getbootstrap.com/components-->	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			
+			<div class="navbar-header">
+				<p class="navbar-brand navbar-left">
+					<strong>Guild of Cards</strong>
+				</p>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav nav-pills">
+					<li class="active"> <a th:href="@{/}">Home</a></li>
+					<li> <a th:href="@{/usuario}">Usuário</a></li>
+					<li> <a th:href="@{/colecao}">Coleção</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<section layout:fragment="Conteudo">
+		<p>Page content goes here</p>
+	</section>
+
+</body>
+</html>

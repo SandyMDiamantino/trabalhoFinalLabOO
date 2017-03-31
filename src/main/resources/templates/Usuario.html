@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz./thymeleaf/layout"
+	layout:decorator="LayoutPadrao"
+	>
+
+<section layout:fragment="Conteudo">
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Usuário</h1>
+		</div>
+		<form class="form-group" method="POST" th:object="${usuario}"
+			th:action="@{/usuario}" style="margin: 20px 0">
+			
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" style="margin: 10px 0"/> 
+				<input type="email" class="form-control" placeholder="exemplo@exemplo.com" 
+					th:field="*{email}" style="margin: 10px 0"/> 
+				<input type="password" class="form-control" th:field="*{senha}" style="margin: 10px 0"/>  
+			<button type="submit" class="btn btn-primary" style="margin: 10px 0">Salvar</button>
+			</div>
+		</form>
+	
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th width="60%">Nome</th>
+						<th>Email</th>
+						<th colspan="2">Ação</th>
+	
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuario : ${usuarios}">
+						<td th:text="${usuario.nome}"></td>
+						<td th:text="${usuario.email}"></td>
+						<td>
+							<a th:href="@{/usuario/excluir/} + ${usuario.id}" class="glyphicon glyphicon-trash"> </a>
+						</td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+	</div>
+</section>
+</html>

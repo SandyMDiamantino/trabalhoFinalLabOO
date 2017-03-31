@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz./thymeleaf/layout"
+	layout:decorator="LayoutPadrao"
+	>
+
+<section layout:fragment="Conteudo">
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Coleção</h1>
+		</div>
+		<form class="form-inline" method="POST" th:object="${carta}"
+			th:action="@{/colecao}" style="margin: 20px 0">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Nome"
+					th:field="*{nome}" /> 
+					<select  class="form-control" th:field="*{jogo}"> 
+					<option value="Yu-Gi-Oh!">Yu-Gi-Oh!</option>
+					<option value="Magic">Magic</option>
+					</select> 
+					<select  class="form-control" th:field="*{tipo}"> 
+					<option value="Criatura">Criatura</option>
+					<option value="Mágica">Mágica</option>
+					<option value="Armadilha">Armadilha</option>
+					</select> 
+					<input type="text" class="form-control" placeholder="0"
+					th:field="*{valor}" /> 
+					<input type="text" class="form-control" placeholder="Descrição"
+					th:field="*{descricao}" /> 
+				<button type="submit" class="btn btn-primary">Salvar</button>
+			</div>
+		</form>
+	
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th width="40%">Nome</th>
+						<th>Jogo</th>
+						<th>Tipo</th>
+						<th>Valor</th>
+						<th>Descrição</th>
+						<th colspan="2">Ação</th>
+	
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="carta : ${cartas}">
+						<td th:text="${carta.nome}"></td>
+						<td th:text="${carta.jogo}"></td>
+						<td th:text="${carta.tipo}"></td>
+						<td th:text="${'R$'+' '+carta.valor}"></td>
+						<td th:text="${carta.descricao}"></td>
+						<td>
+						<a th:href="@{/colecao/excluir/} + ${carta.id}" class="glyphicon glyphicon-trash"> </a>
+							</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+</html>
